@@ -5,6 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     ],
   theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '1024px',
+      xxl: '1536px',
+    },
+    colors: {
+      'first': '#dad7cd',
+      'second': '#a3b18a',
+      'third': '#588157',
+      'fourth': '#3a5a40',
+      'fifth': '#344e41',
+    },
     extend: {},
   },
   plugins: [require("daisyui")],
