@@ -120,7 +120,7 @@ const Login = () => {
                                                 confirmButtonText: 'Ok',
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    navigate(location.state?.from ? location.state.from : '/login');
+                                                    navigate(location.state?.from ? location.state.from : '/');
                                                 }
                                             });
                                         }

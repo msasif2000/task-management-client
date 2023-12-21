@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import { BiUserCircle } from "react-icons/bi";
 import './Navbar.css'
 const Navbar = () => {
     const { user, userLogout } = useAuth();
+    const navigate = useNavigate();
     const handleLogout = () => {
         userLogout();
+        navigate('/');
     }
     // console.log(user);
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to='/to-do-list'>My Lists</Link></li>
         {
             user ?
                 ''
@@ -50,7 +53,7 @@ const Navbar = () => {
                             </>
                             :
                             <>
-                                <Link to='/register'><button className="btn btn-sm md:mr-2 mr-1  bg-third text-first  text-sm md:text-xl">Sign Up</button></Link>
+                                <Link to='/register'><button className="btn btn-sm hover:bg-fifth md:mr-2 mr-1  bg-third text-first  text-sm md:text-xl">Sign Up</button></Link>
                                 <Link to='/login'><BiUserCircle className="text-third text-4xl" /></Link>
                             </>
 
