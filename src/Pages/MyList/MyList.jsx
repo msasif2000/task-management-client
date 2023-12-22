@@ -5,8 +5,7 @@ import useAuth from "../../Hook/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import OngoingTask from "../Dashboard/OngoingTask";
 import PreviousTask from "../Dashboard/PreviousTask";
-
-
+import Swal from "sweetalert2";
 
 const MyList = () => {
     const { user } = useAuth();
@@ -20,11 +19,32 @@ const MyList = () => {
         });
     }, [axiosPublic, user]);
 
+    const date = new Date();
+    //console.log(date.getDate(), date.getMonth(), date.getFullYear());
+
+    tasks.forEach((task) => {
+        const taskDeadline = new Date(task.deadline);
+        if (
+            date.getDate() === taskDeadline.getDate() &&
+            date.getMonth() === taskDeadline.getMonth() &&
+            date.getFullYear() === taskDeadline.getFullYear()
+        ) {
+            Swal.fire({
+                title: "You have a task to do today!",
+                text: "Check your task list",
+                imageUrl: "https://unsplash.it/400/200",
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: "Custom image",
+            });
+        }
+    });
     const handleDragStart = (e, index) => {
         setDraggedItem(tasks[index]);
         e.dataTransfer.effectAllowed = "move";
         e.dataTransfer.setData("text/plain", index);
     };
+
 
     const handleDragOver = (index) => {
         const draggedOverItem = tasks[index];
