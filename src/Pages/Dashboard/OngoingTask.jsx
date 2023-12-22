@@ -51,7 +51,7 @@ const OngoingTask = () => {
 
     return (
         <div className="pt-12">
-            <h2 className="text-center text-3xl font-bold ">Your To-Do-List</h2>
+            <h2 className="text-center text-3xl font-bold ">My Current Task List</h2>
             <div className="p-4 max-w-7xl mx-auto overflow-x-auto">
                 <table className="table min-w-full divide-y divide-gray-200">
                     <thead>
@@ -79,7 +79,7 @@ const OngoingTask = () => {
                                 <td>{item.priority}</td>
                                 <td>{item.details}</td>
                                 <td>
-                                    <button onClick={() => handleStatus(item._id)} className="btn btn-sm bg-fourth text-first px-1">DONE</button>
+                                    <button onClick={() => handleStatus(item._id)} className="btn btn-sm bg-fourth hover:bg-third text-first px-1">DONE</button>
                                 </td>
                             </tr>
                         ))}

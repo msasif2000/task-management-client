@@ -19,11 +19,16 @@ import PreviousTask from './Pages/Dashboard/PreviousTask';
 import Profile from './Pages/Dashboard/Profile';
 import { axiosPublic } from './Hook/useAxiosPublic';
 import EditTask from './Pages/Dashboard/EditTask';
+import MyList from './Pages/MyList/MyList';
+import Statistic from './Pages/Statistic/Statistic';
+import ProfileUpdate from './Pages/Dashboard/ProfileUpdate';
+import ErrorPage from './Components/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -38,6 +43,14 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
+      {
+        path: '/to-do-list',
+        element: <PrivateRoute><MyList></MyList></PrivateRoute>
+      },
+      {
+        path: '/statistics',
+        element: <Statistic></Statistic>
+      }
 
     ]
   },
@@ -53,6 +66,10 @@ const router = createBrowserRouter([
         path: 'toDoList/:email',
         element: <ListToDo></ListToDo>,
         loader: ({ params }) => axiosPublic(`/myTasks/${params.email}`)
+      },
+      {
+        path:'profile/updateProfile/:email',
+        element: <ProfileUpdate></ProfileUpdate>
       },
       {
         path: 'ongoingTask',

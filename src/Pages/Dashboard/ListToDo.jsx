@@ -73,7 +73,7 @@ const ListToDo = () => {
     }
     return (
         <div className="pt-12">
-            <h2 className="text-center text-3xl font-bold ">Your To-Do-List</h2>
+            <h2 className="text-center text-3xl font-bold ">My To-Do-List</h2>
             <div className="p-4 max-w-7xl mx-auto overflow-x-auto">
                 <table className="table min-w-full divide-y divide-gray-200">
                     <thead>
@@ -103,13 +103,13 @@ const ListToDo = () => {
                                 <td>{item.priority}</td>
                                 <td>{item.details}</td>
                                 <td>
-                                    <Link to={`/dashboard/edit/${item._id}`}><button className="btn btn-sm bg-first text-white">EDIT</button></Link>
+                                    <Link to={`/dashboard/edit/${item._id}`}><button className="btn btn-sm hover:bg-third bg-first text-black">EDIT</button></Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDeleteTask(item._id)} className="btn btn-sm bg-third text-first px-1">DELETE</button>
+                                    <button onClick={() => handleDeleteTask(item._id)} className="btn btn-sm bg-third hover:bg-fifth  text-first px-1">DELETE</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleOngoingTask(item._id)} className="btn btn-sm bg-fourth text-first px-1">START</button>
+                                    <button onClick={() => handleOngoingTask(item._id)} className="btn btn-sm bg-fourth hover:bg-third text-first px-1">START</button>
                                 </td>
                             </tr>
                         ))}

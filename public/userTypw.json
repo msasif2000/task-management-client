@@ -1,0 +1,80 @@
+[
+  {
+    "_id": "1",
+        "type": "Developers",
+        "description": "For software developers and programmers looking to manage and organize their tasks efficiently. The website provides a user-friendly interface to track coding projects and deadlines.",
+        "benefits": [
+          "Organize coding tasks and projects",
+          "Set project deadlines and milestones",
+          "Collaborate with team members",
+          "Prioritize and manage coding tasks"
+        ]
+      },
+      {
+        "_id": "2",
+        "type": "Corporate Professionals",
+        "description": "Tailored for corporate professionals and project managers who need a centralized platform to manage tasks, projects, and deadlines within a team or organization.",
+        "benefits": [
+          "Team collaboration on projects",
+          "Task assignment and tracking",
+          "Centralized project management",
+          "Efficient communication within teams"
+        ]
+      },
+      {
+        "_id": "3",
+        "type": "Bankers",
+        "description": "Ideal for bankers and financial professionals to keep track of financial tasks, project deadlines, and client interactions. Enhances organization and productivity in the financial sector.",
+        "benefits": [
+          "Track financial tasks and projects",
+          "Set deadlines for financial activities",
+          "Client communication and updates",
+          "Team collaboration on financial projects"
+        ]
+      },
+      {
+        "_id": "4",
+        "type": "Designers",
+        "description": "Tailored for graphic designers and creatives who want to manage design projects efficiently. The website offers tools to organize design tasks, set project timelines, and collaborate with team members.",
+        "benefits": [
+          "Organize design tasks and projects",
+          "Set project timelines and milestones",
+          "Collaborate with design teams",
+          "Prioritize and manage design tasks"
+        ]
+      },
+      {
+        "_id": "5",
+        "type": "Students",
+        "description": "Designed for students to manage their academic tasks, assignments, and project deadlines. The platform helps students stay organized and focused on their studies by providing a centralized task management system.",
+        "benefits": [
+          "Organize academic tasks and assignments",
+          "Set project deadlines and study goals",
+          "Collaborate on group projects",
+          "Efficient study planning"
+        ]
+      },
+      {
+        "_id": "6",
+        "type": "Healthcare Professionals",
+        "description": "Ideal for healthcare professionals such as doctors and nurses to manage patient-related tasks, appointments, and medical projects. Enhances organization and collaboration in healthcare settings.",
+        "benefits": [
+          "Track patient-related tasks and appointments",
+          "Set deadlines for medical projects",
+          "Collaborate with healthcare teams",
+          "Efficient communication in medical settings"
+        ]
+      },
+      {
+        "_id": "7",
+        "type": "Freelancers",
+        "description": "Tailored for freelancers in various industries who need to manage multiple projects, deadlines, and client interactions. The website provides tools for organizing tasks and tracking project progress.",
+        "benefits": [
+          "Organize freelance projects and tasks",
+          "Set project deadlines and milestones",
+          "Communicate with clients",
+          "Efficient project management for freelancers"
+        ]
+      }
+    ]
+  

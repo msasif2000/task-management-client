@@ -186,7 +186,7 @@ const Register = () => {
                         <div className="text-center">
                             <h1 className="text-5xl font-bold">Sign up!</h1>
                         </div>
-                        <div className="card flex-shrink-2 w-full max-w-sm  shadow-2xl shadow-fifth border-red-600 ">
+                        <div className="card flex-shrink-2 w-full max-w-sm  shadow-2xl shadow-fifth">
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
                                 <div className="form-control">
@@ -222,7 +222,7 @@ const Register = () => {
 
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-sm text-white py-2 rounded-xl font-bold bg-second " >Sign Up</button>
+                                    <button className="btn btn-sm text-first py-2 rounded-xl font-bold bg-second " >Sign Up</button>
                                 </div>
 
 

@@ -14,6 +14,7 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
         <li><Link to='/to-do-list'>My Lists</Link></li>
+        <li><Link to='/statistics'>Statistics</Link></li>
         {
             user ?
                 ''

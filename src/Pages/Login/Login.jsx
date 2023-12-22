@@ -173,7 +173,7 @@ const Login = () => {
                         <div className="text-center">
                             <h1 className="text-5xl font-bold">Login now!</h1>
                         </div>
-                        <div className="card flex-shrink-2 w-full max-w-sm shadow-2xl shadow-fifth border-red-600">
+                        <div className="card flex-shrink-2 w-full max-w-sm shadow-2xl shadow-fifth">
                             <form onSubmit={handleLogin} className="card-body">
                             
                                 <div className="form-control">
@@ -190,7 +190,7 @@ const Login = () => {
                                 </div>
                                
                                 <div className="form-control mt-6">
-                                    <input className="btn btn-sm text-white py-2 rounded-xl font-bold bg-second "  type="submit" value="Sign in" />
+                                    <input className="btn btn-sm text-first py-2 rounded-xl font-bold bg-second "  type="submit" value="Sign in" />
                                 </div>
 
                             </form>

@@ -12,7 +12,7 @@ const PreviousTask = () => {
         })
     return (
         <div className="pt-12">
-            <h2 className="text-center text-3xl font-bold ">Your To-Do-List</h2>
+            <h2 className="text-center text-3xl font-bold ">Task History</h2>
             <div className="p-4 max-w-7xl mx-auto overflow-x-auto">
                 <table className="table min-w-full divide-y divide-gray-200">
                     <thead>
@@ -38,7 +38,7 @@ const PreviousTask = () => {
                                 </td>
                                 <td>{item.details}</td>
                                 <td>
-                                    <button className="btn btn-sm hover:bg-fifth bg-fourth text-first px-1">Completed</button>
+                                    <button className="btn btn-sm hover:bg-third bg-fourth text-first px-1">Completed</button>
                                 </td>
                             </tr>
                         ))}
