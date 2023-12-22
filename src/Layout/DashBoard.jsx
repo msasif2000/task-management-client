@@ -1,4 +1,4 @@
-import { CgProfile } from "react-icons/cg"; 
+import { CgProfile } from "react-icons/cg";
 import { FcOvertime } from "react-icons/fc";
 import { MdTimerOff } from "react-icons/md";
 import { GiSandsOfTime } from "react-icons/gi";
@@ -13,7 +13,8 @@ import useAuth from "../Hook/useAuth";
 
 const DashBoard = () => {
 
-    const { userLogout } = useAuth();
+    const { user, userLogout } = useAuth();
+    const currentEmail = user?.email;
     const navigate = useNavigate();
     const handleLogout = () => {
         userLogout()
@@ -30,13 +31,13 @@ const DashBoard = () => {
                             </label>
                             <ul tabIndex={0} className="sty menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-third rounded-box w-52 ">
                                 <li>
-                                    <h2 className="text-2xl text-red-800 font-bold bg-white"><FcHome className="text-2xl" />DASHBOARD</h2>
+                                    <h2 className="text-2xl text-fifth font-bold bg-white"><FcHome className="text-2xl" />DASHBOARD</h2>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/createTask'><FaBusinessTime className="text-2xl" />Create Task</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/to-do-list'><FcOvertime className="text-2xl" />To-Do-Lists</NavLink>
+                                    <NavLink to={`/dashboard/toDoList/${currentEmail}`}><FcOvertime className="text-2xl" />To-Do-Lists</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/ongoingTask'><GiSandsOfTime className="text-2xl" />Ongoing Task</NavLink>
@@ -52,7 +53,7 @@ const DashBoard = () => {
                                     <NavLink to='/'><FaHome className="text-2xl"></FaHome>Home</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/profile'><CgProfile className="text-2xl"/>Profile</NavLink>
+                                    <NavLink to='/dashboard/profile'><CgProfile className="text-2xl" />Profile</NavLink>
                                 </li>
 
                                 <li>
@@ -67,13 +68,13 @@ const DashBoard = () => {
 
                         <ul className="menu text-xl">
                             <li>
-                                <h2 className="text-2xl text-red-800 font-bold bg-white"><FcHome className="text-2xl" />DASHBOARD</h2>
+                                <h2 className="text-2xl text-fifth font-bold bg-white"><FcHome className="text-2xl" />DASHBOARD</h2>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/createTask'><FaBusinessTime className="text-2xl" />Create Task</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/to-do-list'><FcOvertime className="text-2xl" />To-Do-Lists</NavLink>
+                                <NavLink to={`/dashboard/toDoList/${currentEmail}`}><FcOvertime className="text-2xl" />To-Do-Lists</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/ongoingTask'><GiSandsOfTime className="text-2xl" />Ongoing Task</NavLink>
@@ -90,7 +91,7 @@ const DashBoard = () => {
                                 <NavLink to='/'><FaHome className="text-2xl"></FaHome>Home</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/profile'><CgProfile className="text-2xl"/>Profile</NavLink>
+                                <NavLink to='/dashboard/profile'><CgProfile className="text-2xl" />Profile</NavLink>
                             </li>
                             <li>
                                 <button onClick={handleLogout} className="flex items-center">

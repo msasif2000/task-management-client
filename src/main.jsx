@@ -18,17 +18,19 @@ import ListToDo from './Pages/Dashboard/ListToDo';
 import OngoingTask from './Pages/Dashboard/OngoingTask';
 import PreviousTask from './Pages/Dashboard/PreviousTask';
 import Profile from './Pages/Dashboard/Profile';
+import { axiosPublic } from './Hook/useAxiosPublic';
+import EditTask from './Pages/Dashboard/EditTask';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
     children: [
-     {
-      path: '/',
-      element: <Home></Home>
-     }
-     ,
+      {
+        path: '/',
+        element: <Home></Home>
+      }
+      ,
       {
         path: '/login',
         element: <Login></Login>
@@ -37,10 +39,7 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
-      {
-        path: '/to-do-list',
-        element: <ListToDo></ListToDo>
-      }
+
     ]
   },
   {
@@ -52,8 +51,9 @@ const router = createBrowserRouter([
         element: <CreateTask></CreateTask>
       },
       {
-        path: 'to-do-list',
-        element: <ListToDo></ListToDo>
+        path: 'toDoList/:email',
+        element: <ListToDo></ListToDo>,
+        loader: ({ params }) => axiosPublic(`/myTasks/${params.email}`)
       },
       {
         path: 'ongoingTask',
@@ -66,6 +66,11 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <Profile></Profile>
+      },
+      {
+        path: 'edit/:id',
+        element: <EditTask></EditTask>,
+        loader: ({ params }) => axiosPublic(`/myTask/${params.id}`)
       }
     ]
   }

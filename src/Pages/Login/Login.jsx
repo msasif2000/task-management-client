@@ -17,9 +17,8 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const role = e.target.role.value;
         //console.log(email, password, role);
-        axiosPublic.get(`/usersLogin?email=${email}&role=${role}`)
+        axiosPublic.get(`/usersLogin?email=${email}`)
             .then(res => {
                 if (res.data) {
                     userLogin(email, password)
@@ -54,7 +53,7 @@ const Login = () => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'check email and role again!',
+                    text: 'check email again!',
                     footer: '<a href="/login">Sign in again?</a>'
                 });
 
@@ -90,7 +89,7 @@ const Login = () => {
 
                                 navigate(location.state?.from ? location.state.from : '/dashboard');
                             } else {
-                                const userInfo = { name: displayName, email, photoURL, role: 'user' };
+                                const userInfo = { name: displayName, email, photoURL};
                                 axiosPublic.post('/users', userInfo)
                                     .then((res) => {
                                         console.log(
@@ -112,7 +111,6 @@ const Login = () => {
                                         }
                                         else {
                                             userLogout();
-                                            // User with matching email and role not found, display error
                                             Swal.fire({
                                                 icon: 'error',
                                                 title: 'Error!',
@@ -120,7 +118,7 @@ const Login = () => {
                                                 confirmButtonText: 'Ok',
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    navigate(location.state?.from ? location.state.from : '/');
+                                                    navigate('/');
                                                 }
                                             });
                                         }
@@ -199,7 +197,7 @@ const Login = () => {
                             </form>
                             <div className="flex justify-center">
                                 <label className="label">
-                                    <p>Don`t have an Account? <Link to="/register" className="underline text-red-600 font-bold">Sign Up</Link></p>
+                                    <p>Don`t have an Account? <Link to="/register" className="underline text-fourth font-bold">Sign Up</Link></p>
                                 </label>
                             </div>
                             <div className="text-center">

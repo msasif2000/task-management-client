@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Complete Project Proposal",
+        "description": "Prepare and submit the project proposal document outlining the scope, objectives, and timeline.",
+        "deadline": "2023-12-15"
+    },
+    {
+        "title": "Meeting with Team",
+        "description": "Conduct a team meeting to discuss progress, challenges, and upcoming tasks.",
+        "deadline": "2023-12-10"
+    },
+    {
+        "title": "Design Wireframes",
+        "description": "Create wireframes for the user interface of the new website feature.",
+        "deadline": "2023-12-08"
+    },
+    {
+        "title": "Code Review",
+        "description": "Perform a code review session to ensure code quality and identify any issues.",
+        "deadline": "2023-12-18"
+    },
+    {
+        "title": "Client Presentation",
+        "description": "Prepare a presentation for the client meeting to showcase project progress.",
+        "deadline": "2023-12-22"
+    },
+    {
+        "title": "Testing Phase",
+        "description": "Execute comprehensive testing to identify and resolve any bugs or issues.",
+        "deadline": "2023-12-20"
+    },
+    {
+        "title": "Content Creation",
+        "description": "Generate engaging content for the marketing campaign of the upcoming product launch.",
+        "deadline": "2023-12-14"
+    },
+    {
+        "title": "Budget Planning",
+        "description": "Review and finalize the budget plan for the next fiscal quarter.",
+        "deadline": "2023-12-12"
+    },
+    {
+        "title": "Training Session",
+        "description": "Organize a training session for team members on the use of new project management tools.",
+        "deadline": "2023-12-16"
+    },
+    {
+        "title": "SEO Analysis",
+        "description": "Conduct an in-depth analysis of the website's SEO performance and propose optimizations.",
+        "deadline": "2023-12-19"
+    },
+    {
+        "title": "Client Feedback Collection",
+        "description": "Gather feedback from clients on the recently delivered services and implement improvements.",
+        "deadline": "2023-12-21"
+    },
+    {
+        "title": "Monthly Report Compilation",
+        "description": "Compile and present the monthly progress report to stakeholders and team members.",
+        "deadline": "2023-12-28"
+    },
+    {
+        "title": "Social Media Campaign Launch",
+        "description": "Coordinate the launch of a new social media campaign to increase brand visibility.",
+        "deadline": "2023-12-17"
+    },
+    {
+        "title": "Data Backup",
+        "description": "Ensure regular and secure backup of important project and client data.",
+        "deadline": "2023-12-13"
+    },
+    {
+        "title": "Team Building Activity",
+        "description": "Plan and execute a team-building activity to foster collaboration and communication.",
+        "deadline": "2023-12-23"
+    }
+]

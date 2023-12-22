@@ -79,7 +79,8 @@ const Register = () => {
                             if (res.data) {
                                 
                                 const userInfo = { name: displayName, email, photoURL };
-                                axiosPublic.post('/users', userInfo).then((res) => {
+                                axiosPublic.post('/users', userInfo)
+                                .then((res) => {
                                     if (res.data.insertedId) {
                                         Swal.fire({
                                             title: 'Login  Successful!',
@@ -128,7 +129,7 @@ const Register = () => {
                                                 confirmButtonText: 'Ok',
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    navigate(location.state?.from ? location.state.from : '/');
+                                                    navigate('/');
                                                 }
                                             });
                                         }
@@ -193,31 +194,31 @@ const Register = () => {
                                         <span className="label-text font-bold">Your Name</span>
                                     </label>
                                     <input type="text" {...register("name", { required: true })} placeholder="name" className="input input-bordered text-black" />
-                                    {errors.name && <span className="text-red-600">This field is required</span>}
+                                    {errors.name && <span className="text-fourth">This field is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text font-bold">Photo URL</span>
                                     </label>
                                     <input type="text" {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered text-black" />
-                                    {errors.name && <span className="text-red-600">This field is required</span>}
+                                    {errors.name && <span className="text-fourth">This field is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text font-bold">Email</span>
                                     </label>
                                     <input type="email"  {...register("email", { required: true })} placeholder="email" className="input input-bordered text-black" />
-                                    {errors.email && <span className="text-red-600">This field is required</span>}
+                                    {errors.email && <span className="text-fourth">This field is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text font-bold">Password</span>
                                     </label>
                                     <input type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/, maxLength: 20 })} placeholder="password" className="input input-bordered text-black" />
-                                    {errors.password?.type === 'required' && <span className="text-red-600">Password is required</span>}
-                                    {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be at least 6 characters</span>}
-                                    {errors.password?.type === 'maxLength' && <span className="text-red-600">Password must be at most 20 characters</span>}
-                                    {errors.password?.type === 'pattern' && <span className="text-red-600">Password must contain at least one special character, one uppercase letter and at least one number</span>}
+                                    {errors.password?.type === 'required' && <span className="text-fourth">Password is required</span>}
+                                    {errors.password?.type === 'minLength' && <span className="text-fourth">Password must be at least 6 characters</span>}
+                                    {errors.password?.type === 'maxLength' && <span className="text-fourth">Password must be at most 20 characters</span>}
+                                    {errors.password?.type === 'pattern' && <span className="text-fourth">Password must contain at least one special character, one uppercase letter and at least one number</span>}
 
                                 </div>
                                 <div className="form-control mt-6">
@@ -228,7 +229,7 @@ const Register = () => {
                             </form>
                             <div className="flex justify-center">
                                 <label className="label ">
-                                    <p>Already have an Account? <Link to="/login" className="underline text-red-600 font-bold">Sign in</Link></p>
+                                    <p>Already have an Account? <Link to="/login" className="underline text-fourth font-bold">Sign in</Link></p>
                                 </label>
                             </div>
                             <div className="text-center">

@@ -48,8 +48,8 @@ const Navbar = () => {
                     {
                         user ?
                             <>
-                                <button onClick={handleLogout} className="btn btn-sm md:mr-2 mr-1 border-2 border-red-600 text-sm md:text-xl">Sign Out</button>
-                                <Link to='/dashboard'><img src={user.photoURL} alt="" className="h-14 w-14 rounded-full bg-red-600 p-1" /></Link>
+                                <button onClick={handleLogout} className="btn btn-sm bg-third hover:bg-fifth hover:text-first md:mr-2 mr-1 text-sm md:text-xl">Sign Out</button>
+                                <Link to='/dashboard'><img src={user.photoURL} alt="" className="h-14 w-14 rounded-full bg-fourth p-1" /></Link>
                             </>
                             :
                             <>

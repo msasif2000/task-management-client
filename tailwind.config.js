@@ -17,6 +17,7 @@ export default {
       'third': '#588157',
       'fourth': '#3a5a40',
       'fifth': '#344e41',
+      'black': '#000000'
     },
     extend: {},
   },

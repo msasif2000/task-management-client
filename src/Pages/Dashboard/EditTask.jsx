@@ -1,16 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import Swal from 'sweetalert2';
-import useAuth from "../../Hook/useAuth";
+import Swal from "sweetalert2";
 
-const CreateTask = () => {
+
+const EditTask = () => {
     const axiosPublic = useAxiosPublic();
-    const location = useLocation();
-    const navigate = useNavigate();
 
-    const {user} = useAuth();
+    const data = useLoaderData().data;
 
-    const handleNewTask = e => {
+    const handleUpdateTask = (e) => {   
         e.preventDefault();
         const form = e.target;
 
@@ -19,15 +17,13 @@ const CreateTask = () => {
         const priority = form.priority.value;
         const details = form.details.value;
 
+        const updateTask = { title, deadline, priority, details };
 
-        const newTask = { title, deadline, priority, details, email: user.email };
-        //console.log(newCamp);
-
-        axiosPublic.post('/createTask', newTask)
+        axiosPublic.put(`/updateTask/${data._id}`, updateTask)
             .then(res => {
-                if (res.data.insertedId) {
+                if (res.data.modifiedCount) {
                     Swal.fire({
-                        title: 'Task Created Successfully.',
+                        title: 'Task Updated Successfully.',
                         showClass: {
                             popup: 'animate__animated animate__fadeInDown'
                         },
@@ -35,25 +31,24 @@ const CreateTask = () => {
                             popup: 'animate__animated animate__fadeOutUp'
                         }
                     });
-
-                    navigate(location.state?.from ? location.state.from : '/dashboard/to-do-list');
-
+                    window.location.reload();
                 }
             })
     }
+    //console.log(data);
     return (
         <div>
             <div className="md-container mx-auto">
                 <div className="lg:p-12 md:p-6 p-4 space-y-6">
-                    <h2 className="font-rancho text-4xl text-center">Create Your Task Here</h2>
-                    <form onSubmit={handleNewTask} className="font-raleway ">
+                    <h2 className="font-rancho text-4xl text-center">Update My Task</h2>
+                    <form onSubmit={handleUpdateTask} className="font-raleway ">
                         <div className="">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text font-bold">Task Name</span>
                                 </label>
                                 <label className="">
-                                    <input required type="text" name="title" placeholder="Enter Task Name" className="input input-bordered w-full" />
+                                    <input required type="text" name="title" defaultValue={data.title} className="input input-bordered w-full" />
                                 </label>
                             </div>
                             <div className="form-control">
@@ -61,7 +56,7 @@ const CreateTask = () => {
                                     <span className="label-text font-bold">Deadline</span>
                                 </label>
                                 <label className="">
-                                    <input required type="datetime-local" name="deadline" placeholder="Select Date and Time" className="input input-bordered w-full" />
+                                    <input required type="datetime-local" name="deadline" defaultValue={data.deadline} className="input input-bordered w-full" />
                                 </label>
                             </div>
                             <div className="form-control">
@@ -69,7 +64,7 @@ const CreateTask = () => {
                                     <span className="label-text font-bold">Priority</span>
                                 </label>
                                 <label className="">
-                                    <input required type="number" name="priority" defaultValue={1} className="input input-bordered w-full" />
+                                    <input required type="number" name="priority" defaultValue={data.priority} className="input input-bordered w-full" />
                                 </label>
                             </div>
                             <div className="form-control">
@@ -77,11 +72,11 @@ const CreateTask = () => {
                                     <span className="label-text font-bold">Description</span>
                                 </label>
                                 <label className="">
-                                    <input required type="text" name="details" placeholder="Write Description" className="input input-bordered w-full " />
+                                    <input required type="text" name="details" defaultValue={data.details} className="input input-bordered w-full " />
                                 </label>
                             </div>
                         </div>
-                        <input type="submit" value="Confirm Task" className="w-full mt-6 bg-fifth text-first  border-2 border-third text-center p-2 text-2xl" />
+                        <input type="submit" value="Confirm Update" className="w-full mt-6 bg-fifth text-first  border-2 border-third text-center p-2 text-2xl" />
                     </form>
                 </div>
             </div>
@@ -89,4 +84,4 @@ const CreateTask = () => {
     );
 };
 
-export default CreateTask;
+export default EditTask;
