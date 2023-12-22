@@ -17,7 +17,6 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        //console.log(email, password, role);
         axiosPublic.get(`/usersLogin?email=${email}`)
             .then(res => {
                 if (res.data) {
@@ -114,7 +113,7 @@ const Login = () => {
                                             Swal.fire({
                                                 icon: 'error',
                                                 title: 'Error!',
-                                                text: 'User with the provided email and role not found!',
+                                                text: 'User with the provided email is not found!',
                                                 confirmButtonText: 'Ok',
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
@@ -205,8 +204,8 @@ const Login = () => {
                                 <p>continue with</p>
 
                             </div>
-                            <div onClick={handleGoogleLogin} className="flex justify-center mx-auto mb-2 border-2 rounded-lg border-red-600 my-1">
-                                <p className="flex gap-2 p-2  bg-white"><FcGoogle className="text-2xl "></FcGoogle> Google</p>
+                            <div onClick={handleGoogleLogin} className="flex justify-center mx-auto mb-2 border-2 rounded-lg border-fifth my-1">
+                                <p className="flex gap-2 p-2 font-bold bg-second"><FcGoogle className="text-2xl "/> Google</p>
                             </div>
 
                         </div>

@@ -36,7 +36,7 @@ const CreateTask = () => {
                         }
                     });
 
-                    navigate(location.state?.from ? location.state.from : '/dashboard/to-do-list');
+                    navigate(location.state?.from ? location.state.from : `/dashboard/toDoList/${user.email}`);
 
                 }
             })

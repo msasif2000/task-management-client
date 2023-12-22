@@ -31,7 +31,7 @@ const DashBoard = () => {
                             </label>
                             <ul tabIndex={0} className="sty menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-third rounded-box w-52 ">
                                 <li>
-                                    <h2 className="text-2xl text-fifth font-bold bg-white"><FcHome className="text-2xl" />DASHBOARD</h2>
+                                    <h2 className="text-2xl text-fifth font-bold bg-first "><FcHome className="text-2xl" />DASHBOARD</h2>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/createTask'><FaBusinessTime className="text-2xl" />Create Task</NavLink>
@@ -68,7 +68,7 @@ const DashBoard = () => {
 
                         <ul className="menu text-xl">
                             <li>
-                                <h2 className="text-2xl text-fifth font-bold bg-white"><FcHome className="text-2xl" />DASHBOARD</h2>
+                                <h2 className="text-2xl text-fifth font-bold bg-first"><FcHome className="text-2xl" />DASHBOARD</h2>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/createTask'><FaBusinessTime className="text-2xl" />Create Task</NavLink>

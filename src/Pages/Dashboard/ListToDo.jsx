@@ -8,7 +8,7 @@ const ListToDo = () => {
     //const [listToDo, setListToDo] = useState([]);
     const data = useLoaderData().data;
     //console.log(data);
-const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const handleDeleteTask = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -19,22 +19,58 @@ const axiosPublic = useAxiosPublic();
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         })
-        .then((result) => {
-            if(result.isConfirmed){
-                axiosPublic.delete(`/deleteTask/${id}`)
-                .then(res => {
-                    if(res.data.deletedCount){
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                        window.location.reload();
-                    }
-                })  
-            }
+            .then((result) => {
+                if (result.isConfirmed) {
+                    axiosPublic.delete(`/deleteTask/${id}`)
+                        .then(res => {
+                            if (res.data.deletedCount) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                window.location.reload();
+                            }
+                        })
+                }
+            })
+    }
+
+    const handleOngoingTask = (id) => {
+        Swal.fire({
+            title: "Start Your Task!",
+            text: "Once you started, you will see it in Ongoing Task.",
+            imageUrl: "https://unsplash.it/400/200",
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: "Custom image"
         })
-    } 
+            .then((result) => {
+                if (result.isConfirmed) {
+                    axiosPublic.get(`/myTask/${id}`)
+                        .then((result) => {
+                            console.log(result);
+                            axiosPublic.post('/ongoingTask', result.data)
+                                .then((result) => {
+                                    if (result.data.insertedId) {
+                                        axiosPublic.delete(`/deleteTask/${id}`)
+                                            .then(res => {
+                                                if (res.data.deletedCount) {
+                                                    Swal.fire(
+                                                        'Started!',
+                                                        'See Your Ongoing Task',
+                                                        'success'
+                                                    )
+                                                    window.location.reload();
+                                                }
+                                            })
+                                    }
+                                })
+                        })
+
+                }
+            })
+    }
     return (
         <div className="pt-12">
             <h2 className="text-center text-3xl font-bold ">Your To-Do-List</h2>
@@ -44,10 +80,12 @@ const axiosPublic = useAxiosPublic();
                         <tr>
                             <th>#</th>
                             <th>TITLE</th>
-                            <th>DATE </th>
+                            <th>DEADLINE</th>
+                            <th>PRIORITY </th>
                             <th>DESCRIPTION</th>
                             <th>EDIT</th>
                             <th>DELETE</th>
+                            <th>STATUS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,16 +96,20 @@ const axiosPublic = useAxiosPublic();
                                     <span className="">{item.title}</span>
                                 </td>
                                 <td>
-                                    {item.deadline.split('T')[0]} 
+                                    {item.deadline.split('T')[0]}
                                     <br />
                                     {item.deadline.split('T')[1].split('.')[0]}
                                 </td>
+                                <td>{item.priority}</td>
                                 <td>{item.details}</td>
                                 <td>
-                                    <Link to={`/dashboard/edit/${item._id}`}><button className="btn btn-sm bg-sky-600 text-white">EDIT</button></Link>
+                                    <Link to={`/dashboard/edit/${item._id}`}><button className="btn btn-sm bg-first text-white">EDIT</button></Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDeleteTask(item._id, item.campId)} className="btn btn-sm bg-red-600 px-1">DELETE</button>
+                                    <button onClick={() => handleDeleteTask(item._id)} className="btn btn-sm bg-third text-first px-1">DELETE</button>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleOngoingTask(item._id)} className="btn btn-sm bg-fourth text-first px-1">START</button>
                                 </td>
                             </tr>
                         ))}

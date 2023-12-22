@@ -99,7 +99,7 @@ const Register = () => {
 
                                 navigate(location.state?.from ? location.state.from : '/dashboard');
                             } else {
-                                const userInfo = { name: displayName, email, photoURL, role: 'user' };
+                                const userInfo = { name: displayName, email, photoURL };
                                 axiosPublic.post('/users', userInfo)
                                     .then((res) => {
                                         console.log(
@@ -125,7 +125,7 @@ const Register = () => {
                                             Swal.fire({
                                                 icon: 'error',
                                                 title: 'Error!',
-                                                text: 'User with the provided email and role not found!',
+                                                text: 'User with the provided email is not found!',
                                                 confirmButtonText: 'Ok',
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
@@ -235,8 +235,8 @@ const Register = () => {
                             <div className="text-center">
                                 <p>--or--</p>
                                 <p>continue with</p>
-                                <div onClick={handleGoogleLogin} className="flex justify-center mx-10 border-2 rounded-lg border-red-600 my-1">
-                                    <p className="flex gap-2 p-2  bg-white"><FcGoogle className="text-2xl "></FcGoogle> Google</p>
+                                <div onClick={handleGoogleLogin} className="flex justify-center mx-10 border-2 rounded-lg border-fifth my-1">
+                                    <p className="flex gap-2 p-2  font-bold"><FcGoogle className="text-2xl "></FcGoogle> Google</p>
                                 </div>
                             </div>
 
