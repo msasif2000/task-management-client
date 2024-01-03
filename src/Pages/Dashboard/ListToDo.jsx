@@ -100,7 +100,6 @@ const ListToDo = () => {
     return (
         <div className="pt-12">
             <h2 className="text-center text-3xl font-bold ">My To-Do-List</h2>
-            <p  className="text-center text-xl text-third ">You can drop and drag here to arrange your task</p>
             <div className="p-4 max-w-7xl mx-auto overflow-x-auto">
                 <table className="table min-w-full divide-y divide-gray-200">
                     <thead>

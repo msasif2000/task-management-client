@@ -3,22 +3,32 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../Hook/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import OngoingTask from "../Dashboard/OngoingTask";
-import PreviousTask from "../Dashboard/PreviousTask";
 import Swal from "sweetalert2";
 
 const MyList = () => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const [draggedItem, setDraggedItem] = useState(null);
-    const [tasks, setTasks] = useState([]);
 
+    const [tasks, setTasks] = useState([]);
     useEffect(() => {
         axiosPublic.get(`/myTasks/${user?.email}`).then((res) => {
             setTasks(res.data); // Update the tasks state here
         });
     }, [axiosPublic, user]);
 
+    const [ongoingTask, setOngoingTask] = useState([]);
+    axiosPublic.get(`/ongoingTasks/${user?.email}`)
+        .then((res) => {
+            setOngoingTask(res.data);
+        })
+
+
+    const [prevTask, setPrevTask] = useState([]);
+    axiosPublic.get(`/prevTasks/${user?.email}`)
+        .then((res) => {
+            setPrevTask(res.data);
+        })
     const date = new Date();
     //console.log(date.getDate(), date.getMonth(), date.getFullYear());
 
@@ -39,6 +49,7 @@ const MyList = () => {
             });
         }
     });
+
     const handleDragStart = (e, index) => {
         setDraggedItem(tasks[index]);
         e.dataTransfer.effectAllowed = "move";
@@ -64,12 +75,12 @@ const MyList = () => {
     const handleDragEnd = () => {
         setDraggedItem(null);
     };
+    
     return (
-        <div>
-            <div className="pt-12">
-                <h2 className="text-center text-3xl font-bold ">My To-Do-List</h2>
-                <p className="text-center text-xl text-third ">You can drop and drag here to arrange your task</p>
-                <div className="p-4 max-w-7xl mx-auto overflow-x-auto">
+        <div className="lg:flex gap-2 pt-12 min-h-screen lg:justify-center lg:mx-auto">
+            <div className="">
+                <h2 className="text-center text-3xl font-bold py-2">To-Do-List</h2>
+                <div className="p-4 max-w-7xl mx-auto overflow-x-auto bg-second text-fifth">
                     <table className="table min-w-full divide-y divide-gray-200">
                         <thead>
                             <tr>
@@ -77,7 +88,6 @@ const MyList = () => {
                                 <th>TITLE</th>
                                 <th>DEADLINE</th>
                                 <th>PRIORITY </th>
-                                <th>DESCRIPTION</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,7 +109,6 @@ const MyList = () => {
                                         {item.deadline.split("T")[1].split(".")[0]}
                                     </td>
                                     <td>{item.priority}</td>
-                                    <td>{item.details}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -107,10 +116,65 @@ const MyList = () => {
                 </div>
             </div>
             <div>
-                <OngoingTask></OngoingTask>
+                <h2 className="text-center text-3xl font-bold py-2">Ongoing Task List</h2>
+                <div className="p-4 max-w-7xl mx-auto overflow-x-auto  bg-third text-first">
+                    <table className="table min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>TITLE</th>
+                                <th>DEADLINE </th>
+                                <th>PRIORITY </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {ongoingTask.map((item, index) => (
+                                <tr key={item._id}>
+                                    <th>{index + 1}</th>
+                                    <td>
+                                        <span className="">{item.title}</span>
+                                    </td>
+                                    <td>
+                                        {item.deadline.split('T')[0]}
+                                        <br />
+                                        {item.deadline.split('T')[1].split('.')[0]}
+                                    </td>
+                                    <td>{item.priority}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <PreviousTask></PreviousTask>
+                <h2 className="text-center text-3xl font-bold py-2">Previous Task</h2>
+                <div className="p-4 max-w-7xl mx-auto overflow-x-auto bg-fourth text-second">
+                    <table className="table min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr className="text-first">
+                                <th>#</th>
+                                <th>TITLE</th>
+                                <th>DEADLINE </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {prevTask.map((item, index) => (
+                                <tr key={item._id}>
+                                    <th>{index + 1}</th>
+                                    <td>
+                                        <span className="">{item.title}</span>
+                                    </td>
+                                    <td>
+                                        {item.deadline.split('T')[0]}
+                                        <br />
+                                        {item.deadline.split('T')[1].split('.')[0]}
+                                    </td>
+
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
